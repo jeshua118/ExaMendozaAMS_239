@@ -1,0 +1,51 @@
+@startuml
+' Clase abtracta base 
+abstract class Persona {
+#idPersona : String
+#nombre : String
+#correo : String
+--
++getDatos() : String
+}
+'Clse Especialiada Estudiante 
+class Estudiante {
+-matricula : String
+-inasistencias : int
+-estadoRiesgo : boolean
+--
++consultarHistorial() : void
++registrarBajaMateria() : void
+}
+'Clase especialiazada Tutor 
+class Tutor{
+-numTrabajador : String
+-cubiculo : String
+--
++asingarPlanApoyo() : void
++cosultarAlerta() : void
+}
+' Clase de dominio Alerta de Riesgo
+class AlertaRiesgo{
+-idAlerta : String
+-fecha : Date
+-nivelRiesgo : String
+--
++generarNotificacion() : boolean
+}
+'Clase de dominio plan de apoyo
+class PlanApoyo{
+-idPlan : String
+-descripcionEstrategia : String
+-fechaInicio : Date
+--
++registrarSeguimiento() : void
+'RELACION DE herencia
+
+}
+Persona <-- Estudiante
+Persona <-- Tutor
+'Relacion de Asociasion
+Estudiante "1" -- "0..*" AlertaRiesgo : genera>
+Tutor "1" -- "0..*" PlanApoyo : administra >
+AlertaRiesgo"1" -- "1" PlanApoyo : activa >
+@enduml

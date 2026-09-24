@@ -1,0 +1,19 @@
+@startuml
+left to right direction
+actor Estudiante 
+actor Tutor
+    rectangle "Modulo I: SAT-UACM"{
+usecase "RF-01: Registrar asitencia y bajas " as UC1
+usecase "RF-02: Generar alerta de riesgo " as UC2
+usecase "RF-03: Asigar plan de apoyo" as UC3
+usecase "RF-04: Consultar Historial academico" as UC4
+}
+
+Estudiante --> UC1
+Estudiante --> UC4
+
+Tutor --> UC3
+Tutor --> UC4
+
+UC1 .> UC2 <<include>>
+@enduml
